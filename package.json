@@ -1,0 +1,21 @@
+{
+    "name": "p3",
+  "version": "0.1.0",
+  "description": "App to control the P3, Pick/Paste/Placer",
+  "main": "server/server.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mark-hahn/p3"
+  },
+  "keywords": [
+    "p3"
+  ],
+  "author": "Mark Hahn",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mark-hahn/p3/issues"
+  },
+  "homepage": "https://github.com/mark-hahn/p3",
+  "dependencies": {
+  }
+}
