@@ -6,6 +6,7 @@ log = function() {console.log.apply(null, arguments)};
 // });
 
 fs   = require('fs-plus');
+util = require('util');
 http = require('http');
 url = require('url');
 ajax = require('./ajax');
@@ -38,8 +39,8 @@ srvr = http.createServer(function(req, res) {
       res.writeHead(200, {
         'Content-Type': 'text/plain'
       });
-      res = ajax(urlObj.query);
-      return res.end(util.inspect(res));
+      wRatio = ajax(urlObj.query);
+      res.end(util.inspect(wRatio));
 
     default:
       req.addListener('end', function() {

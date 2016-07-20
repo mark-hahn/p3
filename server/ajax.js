@@ -9,11 +9,14 @@ ratio = 0.85
 module.exports = function(query) {
   if(query.angle)  {
     log ('angle',query.angle);
-    ratio = (query.angle/currentW).toFixed(3);
+    if (currentW)
+      ratio = (query.angle/currentW).toFixed(3);
+    else
+      ratio = 0;
   }
   if(query.deltaW && query.deltaW < 99) {
     log ('deltaW', query.deltaW);
-    delta = query.deltaW.toFixed(2);
+    delta = (+query.deltaW).toFixed(2);
     serial.spinRel(+delta);
     currentW += +delta;
   }

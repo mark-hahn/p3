@@ -21,6 +21,7 @@ gotOK = false;
 port.on('open', function() {
   log('port open');
   port.on('data', function(buf) {
+    buf=buf.toString();
     log('received', buf);
     if(buf === 'OK') {
       gotOK = true;
@@ -33,7 +34,7 @@ exports.spinRel = function(delta) {
     log('spinRel call when port not open');
     return false;
   };
-  buf = 'G1 E' + delta.toFixed(2) + '\r';
+  buf = 'G1 E' + (+delta).toFixed(2) + '\r';
   log('spinRel writing', buf);
   port.write(buf, function(err, writeLen) {
     if(err) log('spinRel write err', err);
