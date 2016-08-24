@@ -1,11 +1,8 @@
-log = function() {console.log.apply(null, arguments)};
+
 
 serial = require('./serial');
 
-serial.findPort('ttyACM0', function(err, port) {
-  if(err) log(err);
-  else log('P3: Using port ', port);
-});
+log = function() {console.log.apply(null, arguments)};
 
 currentW = 0;
 currentAngle = 0;

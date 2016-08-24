@@ -1,8 +1,8 @@
 {
-    "name": "p3",
+  "name": "p3",
   "version": "0.1.0",
   "description": "App to control the P3, Pick/Paste/Placer",
-  "main": "server/server.js",
+  "main": "server/p3_server.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/mark-hahn/p3"
@@ -17,5 +17,9 @@
   },
   "homepage": "https://github.com/mark-hahn/p3",
   "dependencies": {
+    "fs-plus": "^2.9.1",
+    "lodash": "^4.15.0",
+    "node-static": "^0.7.8",
+    "serialport": "^4.0.1"
   }
 }

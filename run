@@ -1,1 +1,18 @@
-node server/server.js
+#   -*-  grammar-ext: sh  -*-
+
+pkill -f "watchify" > /dev/null 2>&1
+
+echo "watching client source"
+watchify client/main.js -v -d -o client/bundle.js &
+
+echo "watching server source"
+
+node server/p3_server.js &
+
+while inotifywait -rq -e modify server; do
+  echo
+  echo "--restarting server"
+  echo
+  pkill -f "p3_server" > /dev/null 2>&1
+  node server/p3_server.js
+done

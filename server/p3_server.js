@@ -1,23 +1,20 @@
-
 log = function() {console.log.apply(null, arguments)};
+log('p3_server started');
 
-// process.on("uncaughtException", function(err) {
-//   return log("Uncaught Exception: " + err);
-// });
+process.on("p3: uncaughtException", function(err) {
+  return log("Uncaught Exception\n", util.inspect(err));
+});
 
 fs   = require('fs-plus');
 util = require('util');
 http = require('http');
 url = require('url');
-ajax = require('./ajax');
 
-nodeStatic = require('node-static');
 _ = require('lodash');
-require('./ajax');
+nodeStatic = require('node-static');
 fileServer = new nodeStatic.Server(null);
 
-log('P3 app');
-
+ajax = require('./ajax');
 srvr = http.createServer(function(req, res) {
 
   urlObj = url.parse(req.url, true);
@@ -34,13 +31,6 @@ srvr = http.createServer(function(req, res) {
         'Content-Type': 'image/vnd.microsoft.icon'
       });
       return res.end(fs.readFileSync('server/images/favicon.ico'));
-
-    case '/form':
-      res.writeHead(200, {
-        'Content-Type': 'text/plain'
-      });
-      wRatio = ajax(urlObj.query);
-      res.end(util.inspect(wRatio));
 
     default:
       req.addListener('end', function() {
