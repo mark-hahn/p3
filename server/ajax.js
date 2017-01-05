@@ -2,7 +2,9 @@ log = function() {console.log.apply(null, arguments)};
 
 serial = require('./serial');
 
-serial.findPort('ttyACM0', function(err, port) {
+// log (serial.listPorts());
+
+serial.findPort(function(err, port) {
   if(err) log(err);
   else log('P3: Using port ', port);
 });
